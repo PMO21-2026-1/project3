@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace ClubManamentSystem.Models
 {
+
     public enum AttendanceStatus
     {
         Present,   
@@ -45,22 +46,25 @@ namespace ClubManamentSystem.Models
         public string Room { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan StartTime { get; set; }
+
         public TimeSpan EndTime { get; set; }
+
     }
 
     public class Enrollment
     {
+
         public int Id { get; set; }
         public int StudentId { get; set; }
         public int ClubId { get; set; }
     }
-
 
     public class Attendance
     {
         public int Id { get; set; }
         public int SessionId { get; set; }
         public int StudentId { get; set; }
+
         public AttendanceStatus Status { get; set; }
     }
 }

@@ -1,8 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ClubManamentSystem.Models;
+using ClubManamentSystem.DataStorage;
+
 namespace ClubManamentSystem.Services
 {
     public class SessionService
     {
-        public int AddSession(int clubId, string room, DateTime date, TimeSpan startTime)
+      
+        public int AddSession(int clubId, string room, DateTime date, TimeSpan startTime, TimeSpan endTime)
         {
             int nextId = DataStore.Sessions.Count == 0 ? 1 : DataStore.Sessions.Max(s => s.Id) + 1;
 
@@ -12,7 +19,8 @@ namespace ClubManamentSystem.Services
                 ClubId = clubId,
                 Room = room,
                 Date = date,
-                StartTime = startTime
+                StartTime = startTime,
+                EndTime = endTime
             };
 
             DataStore.Sessions.Add(session);

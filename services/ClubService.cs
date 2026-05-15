@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ClubManamentSystem.Models;
+using ClubManamentSystem.DataStorage;
+
 namespace ClubManamentSystem.Services
 {
     public class ClubService
@@ -30,5 +36,14 @@ namespace ClubManamentSystem.Services
         public Club GetById(int id) => DataStore.Clubs.FirstOrDefault(c => c.Id == id);
 
         public List<Club> GetAll() => DataStore.Clubs.ToList();
+
+     
+        public List<Student> GetStudentsInClub(int clubId)
+        {
+            return DataStore.Enrollments
+                .Where(e => e.ClubId == clubId)
+                .Join(DataStore.Students, e => e.StudentId, s => s.Id, (e, s) => s)
+                .ToList();
+        }
     }
 }

@@ -7,9 +7,7 @@ namespace ClubManamentSystem.Models
     public enum AttendanceStatus
     {
         Present,   
-        Absent,    
-        Excused,    
-        Late        
+        Absent,           
     }
     public class Student
     {
